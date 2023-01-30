@@ -1,5 +1,7 @@
 # python-lint-annotate
 
+**NOTE**: This is a fork of https://github.com/marian-code/python-lint-annotate and has been modified to provide different python setup behavior.
+
 Zero-configuration GitHub Action to maintain code quality with push and PR annotations.
 
 On every push and pull request git diffs will get inline annotated with found errors from

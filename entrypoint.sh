@@ -18,6 +18,7 @@
 # ${16} - extra-vulture-options
 # ${17} - extra-pydocstyle-options
 # ${18} - pre-run-cmd
+# ${19} - github.action_path
 
 echo python-root-list:          $1
 echo use-pylint:                $2
@@ -37,19 +38,17 @@ echo extra-isort-options:       ${15}
 echo extra-vulture-options:     ${16}
 echo extra-pydocstyle-options:  ${17}
 echo pre-run-cmd:               ${18}
+echo github.action_path:        ${19}
 
 # actions path has the copy of this actions repo
-echo $RUNNER_OS
-if [ $RUNNER_OS = 'Windows' ]
-then
-    MATCHERS=$GITHUB_ACTION_PATH\matchers\*.json
-else
-    MATCHERS=$GITHUB_ACTION_PATH/matchers/*.json
-    if [ -z "$18" ]; then
-        # Run user specified command such as "source /opt/ros/foxy/setup.bash"
-        $18
-    fi
+MATCHERS=$GITHUB_ACTION_PATH/matchers/*.json
+if [ -z "${18}" ]; then
+    # Run user specified command such as "source /opt/ros/foxy/setup.bash"
+    ${18}
 fi
+
+pip install -r ${19}/requirements.txt
+
 echo $MATCHERS
 
 for matcher in $MATCHERS
