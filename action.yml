@@ -90,6 +90,7 @@ runs:
       run: >
         echo "Windows is not a supported runner."
         exit 1
+      shell: pwsh
 
     - name: Lint on Linux
       if: ${{ runner.os == 'Linux' }}
