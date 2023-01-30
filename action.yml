@@ -95,7 +95,7 @@ runs:
     - name: Lint on Linux
       if: ${{ runner.os == 'Linux' }}
       run: >
-        ${{ github.action_path }}/entrypoint.sh
+        ${GITHUB_ACTION_PATH}/entrypoint.sh
         '${{ inputs.python-root-list }}'
         ${{ inputs.use-pylint }}
         ${{ inputs.use-pycodestyle }}
@@ -114,5 +114,5 @@ runs:
         '${{ inputs.extra-vulture-options }}'
         '${{ inputs.extra-pydocstyle-options }}'
         '${{ inputs.pre-run-cmd }}'
-        '${{ github.action_path }}'
+        '${GITHUB_ACTION_PATH}'
       shell: bash
