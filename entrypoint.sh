@@ -17,6 +17,7 @@
 # ${15} - extra-isort-options
 # ${16} - extra-vulture-options
 # ${17} - extra-pydocstyle-options
+# ${18} - pre-run-cmd
 
 echo python-root-list:          $1
 echo use-pylint:                $2
@@ -35,6 +36,7 @@ echo extra-mypy-options:        ${14}
 echo extra-isort-options:       ${15}
 echo extra-vulture-options:     ${16}
 echo extra-pydocstyle-options:  ${17}
+echo pre-run-cmd:               ${18}
 
 # actions path has the copy of this actions repo
 echo $RUNNER_OS
@@ -43,6 +45,10 @@ then
     MATCHERS=$GITHUB_ACTION_PATH\matchers\*.json
 else
     MATCHERS=$GITHUB_ACTION_PATH/matchers/*.json
+    if [ -z "$18" ]; then
+        # Run user specified command such as "source /opt/ros/foxy/setup.bash"
+        $18
+    fi
 fi
 echo $MATCHERS
 
