@@ -114,5 +114,5 @@ runs:
         '${{ inputs.extra-vulture-options }}'
         '${{ inputs.extra-pydocstyle-options }}'
         '${{ inputs.pre-run-cmd }}'
-        '${GITHUB_ACTION_PATH}'
+        "${GITHUB_ACTION_PATH}"
       shell: bash

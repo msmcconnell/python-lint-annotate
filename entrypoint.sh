@@ -47,6 +47,8 @@ if [ -z "${18}" ]; then
     ${18}
 fi
 
+echo "Github Action Path: " ${19}
+
 pip install -r ${19}/requirements.txt
 
 echo $MATCHERS
